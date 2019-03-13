@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kalkulator</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <header >
+    <div class="container-fluid">
+      <div id="logo" class="pull-left">
+        <h1><a href="#" >Kalkulator</a></h1>
+      </div>
+    </div>
+  </header>
+  <section id="introgd">
+    <div class="intro-container">
+      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+      </div>
+    </div>
+  </section>
+  <main id="main">
+    <section id="makecampaign"  >
+      <div class="container">
+        <header class="section-header" style="margin-top: 10px">
+          <h3 class="section-title">Kalkulator</h3>
+        </header>
+        <div class="row portfolio-container">
+          <div class="col-md-12 portfolio-item wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="box" style="margin-top: 10px;">
+               <div class="box-body">
+                  <div class="box-body-col">
+                     <div class="form-group">
+                        <div class="row">
+                          <label class="control-label col-md-3">Angka Pertama</label>
+                          <div class="col-md-8">
+                            <input class="form-control" id="angka_pertama" type="number" value="" placeholder="Angka Pertama">
+                          </div>
+                        </div>         
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label class="control-label col-md-3">Oerator</label>
+                          <div class="col-md-8">
+                            <select name="operator" id="operator" class="form-control operator" required="required">
+                              <option value="" disabled selected>Pilih Operator</option>
+                              <option value="+">+</option>
+                              <option value="-">-</option> 
+                              <option value="/">/</option>
+                              <option value="*">*</option>          
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label class="control-label col-md-3">Angka Kedua</label>
+                          <div class="col-md-8">
+                            <input class="form-control" id="angka_kedua" type="number" value="" placeholder="Angka Kedua">
+                          </div>
+                        </div>        
+                      </div>
+                     <div class="row">
+                        <label class="control-label col-md-3"></label>
+                        <div class="col-md-8 ">
+                          <input type="submit" name="submit" value=" = " class="btn btn-primary" style="margin-bottom: 20px; margin-top: 20px; float: left;" onclick="kalkulator.call(this)">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="row">
+                          <label class="control-label col-md-3">Hasil</label>
+                          <div class="col-md-8">
+                            <input class="form-control" disabled id="hasil" name="hasil" type="text"  value="" placeholder="Hasil">
+                          </div>
+                        </div>        
+                      </div>
+                  </div>
+                </div>
+            </div>
+         </div>
+        </div>
+      </div>
+    </section>   
+  </main>
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright 
+      </div>
+    </div>
+  </footer>
+  <!-- jQuery -->
+  <script src="lib/jquery/dist/jquery.min.js"></script>
+  
+  <!-- Bootstrap -->
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  // function  kalkulator(){
+  //   let angka = document.querySelectorAll('input');
+  //   let i1 = angka[0].value; //angka pertama
+  //   let i2 = angka[1].value; //angka kedua
+  //   angka[2].value=parseInt(i1)+parseInt(i2);
+
+  //   let pesan = document.getElementById('message');
+  //   pesan.textContent="Selesai";
+  // }
+  // let tombol = document.querySelectorAll('button');
+  // tombol[0].addEventListener('click',kalkulator);
+
+  //js
+  $(document).ready(function(){
+    $('.operator').change(function(){
+      if($(this).val() != ''){
+        
+        var value = $(this).val();
+
+        var angka_pertama= document.getElementById("angka_pertama").value;
+        if (angka_pertama !='') {
+          var angka_kedua= document.getElementById("angka_kedua").value;        
+          if (angka_kedua != '') {
+            if (value=='+') {
+              var hasil = parseInt(angka_pertama) + parseInt(angka_kedua);
+              console.log(hasil);
+
+              document.getElementById("hasil").value=hasil;
+            }else if (value=='-') {
+              var hasil = parseInt(angka_pertama) - parseInt(angka_kedua);
+              console.log(hasil);
+
+              document.getElementById("hasil").value=hasil;
+            }else if (value=='*') {
+              var hasil = parseInt(angka_pertama) * parseInt(angka_kedua);
+              console.log(hasil);
+
+              document.getElementById("hasil").value=hasil;
+            }else if (value=='/') {
+              var hasil = parseInt(angka_pertama) / parseInt(angka_kedua);
+              console.log(hasil);
+
+              document.getElementById("hasil").value=hasil;
+            }
+
+          }
+        }else{
+          //message
+        }
+        // console.log(angka_pertama);
+      }
+    });
+
+  });
+
+  function kalkulator(){
+    var value = document.getElementById("operator").value;
+
+    var angka_pertama= document.getElementById("angka_pertama").value;
+    if (angka_pertama !='') {
+      var angka_kedua= document.getElementById("angka_kedua").value;        
+      if (angka_kedua != '') {
+        if (value=='+') {
+          var hasil = parseInt(angka_pertama) + parseInt(angka_kedua);
+          console.log(hasil);
+
+          document.getElementById("hasil").value=hasil;
+        }else if (value=='-') {
+          var hasil = parseInt(angka_pertama) - parseInt(angka_kedua);
+          console.log(hasil);
+
+          document.getElementById("hasil").value=hasil;
+        }else if (value=='*') {
+          var hasil = parseInt(angka_pertama) * parseInt(angka_kedua);
+          console.log(hasil);
+
+          document.getElementById("hasil").value=hasil;
+        }else if (value=='/') {
+          var hasil = parseInt(angka_pertama) / parseInt(angka_kedua);
+          console.log(hasil);
+
+          document.getElementById("hasil").value=hasil;
+        }
+
+      }
+    }else{
+      //message
+    }
+  }
+</script>
+</body>
+</html>
